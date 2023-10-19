@@ -1,12 +1,13 @@
 package plugin.panhabu.Commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
+import plugin.panhabu.Configuration;
 import plugin.panhabu.PrisonFunctions.PrisonCommand;
 import plugin.panhabu.PrisonFunctions.Prisoners;
 import plugin.panhabu.PrisonFunctions.PrisonersFile;
@@ -37,8 +38,14 @@ public class Prison implements TabCompleter, CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (args.length < 1) {
-            sender.sendMessage("Please provide the player!");
+        if (args.length == 1) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                Location prisonLocation = Configuration.getLocation("locations.prisonLocation");
+                if (prisonLocation != null) player.teleport(prisonLocation);
+            } else {
+                sender.sendMessage("Please provide the player!");
+            }
             return true;
         }
 
