@@ -1,0 +1,14 @@
+
+config:
+  voidLevel: 0
+
+locations:
+  prisonLocation:
+  authLocation:
+  spawnLocation:
+
+prison:
+  teamName: prisoner
+  spawnPoint:
+  pos1:
+  pos2:

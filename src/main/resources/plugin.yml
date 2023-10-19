@@ -1,0 +1,32 @@
+name: Panhabu
+version: '${project.version}'
+main: plugin.panhabu.Panhabu
+api-version: '1.20'
+
+commands:
+  panhabu:
+    description: "command"
+    permission: op
+  prison:
+    description: "command"
+    permission: op
+    aliases:
+      - jail
+  release:
+    description: "command"
+    permission: op
+    aliases:
+      - unjail
+  setauth:
+    description: "command"
+    permission: op
+  setprison:
+    description: "command"
+    permission: op
+    aliases:
+      - setjail
+  setspawn:
+    description: "command"
+    permission: op
+  spawn:
+    description: "command"
