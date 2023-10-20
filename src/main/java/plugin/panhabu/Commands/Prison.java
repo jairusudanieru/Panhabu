@@ -38,7 +38,7 @@ public class Prison implements TabCompleter, CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (args.length == 1) {
+        if (args.length == 0) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 Location prisonLocation = Configuration.getLocation("locations.prisonLocation");
@@ -46,12 +46,7 @@ public class Prison implements TabCompleter, CommandExecutor {
             } else {
                 sender.sendMessage(Configuration.formatString("&cPlease provide the player!"));
             }
-            return true;
-        }
-
-        if (args.length < 3) {
-            sender.sendMessage(Configuration.formatString("&cPlease provide the time!"));
-            return true;
+           return true;
         }
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[0]);
@@ -60,19 +55,28 @@ public class Prison implements TabCompleter, CommandExecutor {
             return true;
         }
 
-        if (args.length == 3) {
-            int cooldown = PrisonCommand.cooldown(args[1], args[2]);
-            ConfigurationSection section = PrisonersFile.getFile().getConfigurationSection("prisoners." + target.getName());
-            if (section != null) {
-                sender.sendMessage(Configuration.formatString("&cPlayer is already in the prison!"));
-                return true;
-            }
-
-            PrisonersFile.getFile().set("prisoners." + target.getName() + ".cooldown", cooldown);
-            PrisonersFile.saveFile();
-            Prisoners.addToTeam(target.getName());
-            sender.sendMessage(Configuration.formatString("&aAdded player to the prison!"));
+        if (args.length == 1 || args.length == 2) {
+            sender.sendMessage(Configuration.formatString("&cPlease provide the time!"));
+            return true;
         }
+
+        if (args.length > 3) {
+            sender.sendMessage(Configuration.formatString("&cInvalid command usage!"));
+            return true;
+        }
+
+        int cooldown = PrisonCommand.cooldown(args[1], args[2]);
+        ConfigurationSection section = PrisonersFile.getFile().getConfigurationSection("prisoners." + target.getName());
+        if (section != null) {
+            sender.sendMessage(Configuration.formatString("&cPlayer is already in the prison!"));
+            return true;
+        }
+
+        PrisonersFile.getFile().set("prisoners." + target.getName() + ".cooldown", cooldown);
+        PrisonersFile.saveFile();
+        Prisoners.addToTeam(target.getName());
+        sender.sendMessage(Configuration.formatString("&aAdded player to the prison!"));
+        sender.sendMessage(Configuration.formatString("&aPlayer: &r" + target.getName() + " &aCooldown: &r" + cooldown + "s"));
 
         return true;
     }
