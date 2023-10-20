@@ -51,6 +51,7 @@ public final class Panhabu extends JavaPlugin {
     public void registerEvents() {
         Plugin authMePlugin = Bukkit.getPluginManager().getPlugin("AuthMe");
         if (authMePlugin != null) Bukkit.getPluginManager().registerEvents(new PlayerLogin(),this);
+        Bukkit.getPluginManager().registerEvents(new PlayerCommand(),this);
         Bukkit.getPluginManager().registerEvents(new PlayerDamage(),this);
         Bukkit.getPluginManager().registerEvents(new PlayerInteract(),this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(),this);
