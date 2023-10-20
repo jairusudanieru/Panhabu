@@ -17,7 +17,7 @@ public class PlayerMove implements Listener {
    @EventHandler
    public void onPlayerMove(PlayerMoveEvent event) {
       Player player = event.getPlayer();
-      boolean isPrisoner = Prisoners.isInPrison(player);
+      boolean isPrisoner = Prisoners.isPlayerInJail(player);
       boolean inPrisonCell = Prisoners.inPrisonCell(player);
 
       Location prisonLocation = Configuration.getLocation("locations.prisonLocation");

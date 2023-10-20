@@ -15,6 +15,10 @@ public class Configuration {
       return ChatColor.translateAlternateColorCodes('&',string);
    }
 
+   public static boolean getBoolean(String key) {
+      return plugin.getConfig().getBoolean(key);
+   }
+
    public static Location getLocation(String key) {
       return plugin.getConfig().getLocation(key);
    }

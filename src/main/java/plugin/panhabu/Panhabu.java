@@ -5,12 +5,18 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugin.panhabu.Commands.*;
 import plugin.panhabu.Events.*;
+import plugin.panhabu.PrisonFunctions.Prisoners;
 import plugin.panhabu.PrisonFunctions.PrisonersCooldown;
 import plugin.panhabu.PrisonFunctions.PrisonersFile;
 
 import java.util.Objects;
 
 public final class Panhabu extends JavaPlugin {
+
+    public Configuration configuration;
+    public Prisoners prisoners;
+    public PrisonersCooldown prisonersCooldown;
+    public PrisonersFile prisonersFile;
 
     @Override
     public void onEnable() {
@@ -22,6 +28,7 @@ public final class Panhabu extends JavaPlugin {
         PrisonersFile.getFile().options().copyDefaults(true);
         PrisonersFile.saveFile();
         PrisonersCooldown.checkCooldown();
+        PrisonersCooldown.checkBossBar();
         Bukkit.getLogger().info("[Panhabu] Plugin Enabled Successfully!");
     }
 

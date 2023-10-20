@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -41,10 +42,13 @@ public class Prisoners {
       team.removeEntry(playerName);
    }
 
-   public static boolean isInPrison(Player player) {
-      String playerName = player.getName();
-      Team team = team();
-      return team.hasEntry(playerName);
+   public static boolean isPlayerInJail(Player player) {
+      ConfigurationSection section = PrisonersFile.getFile().getConfigurationSection("prisoners");
+      if (section == null) return false;
+      for (String name : section.getKeys(false)) {
+         if (name.equals(player.getName())) return true;
+      }
+      return false;
    }
 
    public static boolean inPrisonCell(Player player) {

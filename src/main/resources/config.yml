@@ -1,5 +1,6 @@
 
 config:
+  prisonBossBar: true
   voidLevel: 0
 
 locations:
