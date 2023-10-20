@@ -1,5 +1,7 @@
 package plugin.panhabu.Events;
 
+import fr.xephi.authme.api.v3.AuthMeApi;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -7,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import plugin.panhabu.Configuration;
@@ -20,12 +23,17 @@ public class PlayerMove implements Listener {
       boolean isPrisoner = Prisoners.isPlayerInJail(player);
       boolean inPrisonCell = Prisoners.inPrisonCell(player);
 
+      Plugin authMeReloaded = Bukkit.getPluginManager().getPlugin("AuthMe");
+      if (authMeReloaded != null && !AuthMeApi.getInstance().isAuthenticated(player)) return;
+
       Location prisonLocation = Configuration.getLocation("locations.prisonLocation");
       if (prisonLocation == null) return;
+
       if (!isPrisoner && prisonLocation.getWorld() == player.getWorld()) {
          if (player.hasPotionEffect(PotionEffectType.INVISIBILITY)) player.removePotionEffect(PotionEffectType.INVISIBILITY);
          if (player.hasPotionEffect(PotionEffectType.GLOWING)) player.removePotionEffect(PotionEffectType.GLOWING);
-         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) player.removePotionEffect(PotionEffectType.BLINDNESS);}
+         if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) player.removePotionEffect(PotionEffectType.BLINDNESS);
+      }
 
       if (isPrisoner && inPrisonCell) {
          player.setGameMode(GameMode.ADVENTURE);

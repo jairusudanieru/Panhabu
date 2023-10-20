@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 import plugin.panhabu.Configuration;
 import plugin.panhabu.Panhabu;
@@ -31,6 +32,17 @@ public class PlayerLogin implements Listener {
             if (spawnLocation != null) player.teleport(spawnLocation);
          }
       }, 1L);
+   }
+
+   @EventHandler
+   public void onAuthLogin(LoginEvent event) {
+      Player player = event.getPlayer();
+      Location authLocation = Configuration.getLocation("locations.authLocation");
+      if (authLocation == null) return;
+      if (authLocation.getWorld() != player.getLocation().getWorld()) return;
+      if (player.hasPotionEffect(PotionEffectType.INVISIBILITY)) player.removePotionEffect(PotionEffectType.INVISIBILITY);
+      if (player.hasPotionEffect(PotionEffectType.GLOWING)) player.removePotionEffect(PotionEffectType.GLOWING);
+      if (player.hasPotionEffect(PotionEffectType.BLINDNESS)) player.removePotionEffect(PotionEffectType.BLINDNESS);
    }
 
 }
