@@ -11,7 +11,7 @@ import java.io.IOException;
 public class PrisonersFile {
 
    private static File file;
-   private static FileConfiguration prisonersFile;
+   private static FileConfiguration fileConfiguration;
 
    public static void checkFile() {
       Plugin plugin = Bukkit.getPluginManager().getPlugin("Panhabu");
@@ -26,23 +26,23 @@ public class PrisonersFile {
             Bukkit.getLogger().info("Unable to create prisoners.yml");
          }
       }
-      prisonersFile = YamlConfiguration.loadConfiguration(file);
+      fileConfiguration = YamlConfiguration.loadConfiguration(file);
    }
 
    public static FileConfiguration getFile() {
-      return prisonersFile;
+      return fileConfiguration;
    }
 
    public static void saveFile() {
       try {
-         prisonersFile.save(file);
+         fileConfiguration.save(file);
       } catch (IOException exception) {
          Bukkit.getLogger().info("Unable to save prisoners.yml");
       }
    }
 
    public static void reloadFile() {
-      prisonersFile = YamlConfiguration.loadConfiguration(file);
+      fileConfiguration = YamlConfiguration.loadConfiguration(file);
    }
 
 }

@@ -24,12 +24,12 @@ public class SetAuth implements TabCompleter, CommandExecutor {
         Player player = (Player) sender;
         Location authLocation = player.getLocation();
         if (args.length != 0) {
-            player.sendMessage("Invalid command usage!");
+            player.sendMessage(Configuration.formatString("&cInvalid command usage!"));
             return true;
         }
 
         Configuration.setLocation("locations.authLocation", authLocation);
-        player.sendMessage("Auth Location has been set!");
+        player.sendMessage(Configuration.formatString("&aAuth Location has been set!"));
         return true;
     }
 }

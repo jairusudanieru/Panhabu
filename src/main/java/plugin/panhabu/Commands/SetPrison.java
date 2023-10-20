@@ -14,48 +14,48 @@ import java.util.List;
 
 public class SetPrison implements TabCompleter, CommandExecutor {
 
-    @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
-        List<String> subcommands = new ArrayList<>();
-        subcommands.add("spawn");
-        subcommands.add("pos1");
-        subcommands.add("pos2");
-        return subcommands;
-    }
+   @Override
+   public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
+      List<String> subcommands = new ArrayList<>();
+      subcommands.add("spawn");
+      subcommands.add("pos1");
+      subcommands.add("pos2");
+      return subcommands;
+   }
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        Player player = (Player) sender;
-        Location prisonLocation = player.getLocation();
-        if (args.length != 1) {
-            player.sendMessage("Invalid command usage!");
-            return true;
-        }
+   @Override
+   public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+      Player player = (Player) sender;
+      Location prisonLocation = player.getLocation();
+      if (args.length != 1) {
+         player.sendMessage(Configuration.formatString("&cInvalid command usage!"));
+         return true;
+      }
 
-        if (args[0].equals("spawn")) {
-            Configuration.setLocation("locations.prisonLocation", prisonLocation);
-            player.sendMessage("Prison Location has been set!");
-            return true;
-        }
+      if (args[0].equals("spawn")) {
+         Configuration.setLocation("locations.prisonLocation", prisonLocation);
+         player.sendMessage(Configuration.formatString("&aPrison Location has been set!"));
+         return true;
+      }
 
-        double x = player.getLocation().getX();
-        double y = player.getLocation().getY();
-        double z = player.getLocation().getZ();
+      double x = player.getLocation().getX();
+      double y = player.getLocation().getY();
+      double z = player.getLocation().getZ();
 
-        if (args[0].equals("pos1")) {
-            Configuration.setLocation("prison.pos1", player.getLocation());
-            player.sendMessage("Prison Pos1 set to " + x + " " + y + " " + z);
-            return true;
-        }
+      if (args[0].equals("pos1")) {
+         Configuration.setLocation("prison.pos1", player.getLocation());
+         player.sendMessage(Configuration.formatString("&aPrison Pos1 set to " + x + " " + y + " " + z));
+         return true;
+      }
 
-        if (args[0].equals("pos2")) {
-            Configuration.setLocation("prison.pos2", player.getLocation());
-            player.sendMessage("Prison Pos2 set to " + x + " " + y + " " + z);
-            return true;
-        }
+      if (args[0].equals("pos2")) {
+         Configuration.setLocation("prison.pos2", player.getLocation());
+         player.sendMessage(Configuration.formatString("&aPrison Pos2 set to " + x + " " + y + " " + z));
+         return true;
+      }
 
-        player.sendMessage("Invalid command usage!");
-        return true;
-    }
+      player.sendMessage(Configuration.formatString("&cInvalid command usage!"));
+      return true;
+   }
 
 }

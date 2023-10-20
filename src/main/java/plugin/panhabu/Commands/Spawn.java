@@ -25,7 +25,7 @@ public class Spawn implements TabCompleter, CommandExecutor {
         Location spawnLocation = Configuration.getLocation("locations.spawnLocation");
 
         if (args.length != 0) {
-            player.sendMessage("Invalid command usage!");
+            player.sendMessage(Configuration.formatString("&cInvalid command usage!"));
             return true;
         }
 

@@ -25,7 +25,7 @@ public class Main implements TabCompleter, CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         if (args.length == 1 && args[0].equals("reload")) {
             Configuration.reloadConfig();
-            sender.sendMessage("Configuration successfully reloaded");
+            sender.sendMessage(Configuration.formatString("&bConfiguration successfully reloaded"));
             return true;
         }
         return true;

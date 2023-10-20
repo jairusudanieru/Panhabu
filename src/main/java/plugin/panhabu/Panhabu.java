@@ -5,7 +5,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugin.panhabu.Commands.*;
 import plugin.panhabu.Events.*;
-import plugin.panhabu.PrisonFunctions.Prisoners;
 import plugin.panhabu.PrisonFunctions.PrisonersCooldown;
 import plugin.panhabu.PrisonFunctions.PrisonersFile;
 
@@ -23,11 +22,13 @@ public final class Panhabu extends JavaPlugin {
         PrisonersFile.getFile().options().copyDefaults(true);
         PrisonersFile.saveFile();
         PrisonersCooldown.checkCooldown();
+        Bukkit.getLogger().info("[Panhabu] Plugin Enabled Successfully!");
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        Bukkit.getLogger().info("[Panhabu] Plugin Disabled Successfully!");
     }
 
     public void registerCommands() {

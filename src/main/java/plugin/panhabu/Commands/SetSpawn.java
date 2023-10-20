@@ -24,12 +24,12 @@ public class SetSpawn implements TabCompleter, CommandExecutor {
         Player player = (Player) sender;
         Location spawnLocation = player.getLocation();
         if (args.length != 0) {
-            player.sendMessage("Invalid command usage!");
+            player.sendMessage(Configuration.formatString("&cInvalid command usage!"));
             return true;
         }
 
         Configuration.setLocation("locations.spawnLocation", spawnLocation);
-        player.sendMessage("Spawn Location has been set!");
+        player.sendMessage(Configuration.formatString("&aSpawn Location has been set!"));
         return true;
     }
 }

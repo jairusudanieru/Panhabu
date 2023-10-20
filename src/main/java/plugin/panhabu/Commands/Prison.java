@@ -44,19 +44,19 @@ public class Prison implements TabCompleter, CommandExecutor {
                 Location prisonLocation = Configuration.getLocation("locations.prisonLocation");
                 if (prisonLocation != null) player.teleport(prisonLocation);
             } else {
-                sender.sendMessage("Please provide the player!");
+                sender.sendMessage(Configuration.formatString("&cPlease provide the player!"));
             }
             return true;
         }
 
         if (args.length < 3) {
-            sender.sendMessage("Please provide the time!");
+            sender.sendMessage(Configuration.formatString("&cPlease provide the time!"));
             return true;
         }
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[0]);
         if (!target.hasPlayedBefore()) {
-            sender.sendMessage("Can't find that player!");
+            sender.sendMessage(Configuration.formatString("&cCan't find that player!"));
             return true;
         }
 
@@ -64,14 +64,14 @@ public class Prison implements TabCompleter, CommandExecutor {
             int cooldown = PrisonCommand.cooldown(args[1], args[2]);
             ConfigurationSection section = PrisonersFile.getFile().getConfigurationSection("prisoners." + target.getName());
             if (section != null) {
-                sender.sendMessage("Player is already in the prison!");
+                sender.sendMessage(Configuration.formatString("&cPlayer is already in the prison!"));
                 return true;
             }
 
             PrisonersFile.getFile().set("prisoners." + target.getName() + ".cooldown", cooldown);
             PrisonersFile.saveFile();
             Prisoners.addToTeam(target.getName());
-            sender.sendMessage("Added player to the prison!");
+            sender.sendMessage(Configuration.formatString("&aAdded player to the prison!"));
         }
 
         return true;

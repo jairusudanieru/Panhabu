@@ -4,11 +4,11 @@ import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@SuppressWarnings("deprecation")
 public class Configuration {
 
    private static final Panhabu plugin = JavaPlugin.getPlugin(Panhabu.class);
 
-   @SuppressWarnings("deprecation")
    public static String getString(String key) {
       String string = plugin.getConfig().getString(key);
       if (string == null) return "";
@@ -23,10 +23,6 @@ public class Configuration {
       return plugin.getConfig().getDouble(key);
    }
 
-   public static long getLong(String key) {
-      return plugin.getConfig().getLong(key);
-   }
-
    public static void reloadConfig() {
       plugin.reloadConfig();
    }
@@ -35,6 +31,11 @@ public class Configuration {
       if (key == null || location == null) return;
       plugin.getConfig().set(key, location);
       plugin.saveConfig();
+   }
+
+   public static String formatString(String string) {
+      if (string == null) return "";
+      return ChatColor.translateAlternateColorCodes('&',string);
    }
 
 }
