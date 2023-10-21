@@ -11,7 +11,7 @@ public class PlayerInteract implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        boolean isPrisoner = Prisoners.isPlayerInJail(player);
+        boolean isPrisoner = Prisoners.isPrisoner(player);
         boolean inPrisonCell = Prisoners.inPrisonCell(player);
         if (!isPrisoner && !inPrisonCell) return;
         event.setCancelled(true);

@@ -52,7 +52,7 @@ public class Prisoners {
       team.removeEntry(playerName);
    }
 
-   public static boolean isPlayerInJail(Player player) {
+   public static boolean isPrisoner(Player player) {
       ConfigurationSection section = PrisonersFile.getFile().getConfigurationSection("prisoners");
       if (section == null) return false;
       for (String name : section.getKeys(false)) {
@@ -100,7 +100,7 @@ public class Prisoners {
    public static void checkCooldown() {
       Bukkit.getScheduler().runTaskTimer(plugin, () -> {
          for (Player player : Bukkit.getOnlinePlayers()) {
-            if (isPlayerInJail(player) && Prisoners.inPrisonCell(player) && player.isOnline()) {
+            if (isPrisoner(player) && Prisoners.inPrisonCell(player) && player.isOnline()) {
                int cooldown = getRemainingCooldown(player);
                if (cooldown > 0) {
                   setRemainingCooldown(player, cooldown - 1);
@@ -119,7 +119,7 @@ public class Prisoners {
       String title = "Prison Time: ";
       Bukkit.getScheduler().runTaskTimer(plugin, () -> {
          for (Player player : Bukkit.getOnlinePlayers()) {
-            if (isPlayerInJail(player) && player.isOnline()) {
+            if (isPrisoner(player) && player.isOnline()) {
                int cooldown = getRemainingCooldown(player);
                BossBar bossBar = bossBarMap.get(player);
                if (bossBar == null) {

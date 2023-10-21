@@ -20,7 +20,7 @@ public class PlayerMove implements Listener {
    @EventHandler
    public void onPlayerMove(PlayerMoveEvent event) {
       Player player = event.getPlayer();
-      boolean isPrisoner = Prisoners.isPlayerInJail(player);
+      boolean isPrisoner = Prisoners.isPrisoner(player);
       boolean inPrisonCell = Prisoners.inPrisonCell(player);
 
       Plugin authMeReloaded = Bukkit.getPluginManager().getPlugin("AuthMe");
