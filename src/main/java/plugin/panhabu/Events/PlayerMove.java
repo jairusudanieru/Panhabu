@@ -12,8 +12,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import plugin.panhabu.Configuration;
-import plugin.panhabu.PrisonFunctions.Prisoners;
+import plugin.panhabu.PluginFunctions.Configuration;
+import plugin.panhabu.PluginFunctions.Prisoners;
 
 public class PlayerMove implements Listener {
 

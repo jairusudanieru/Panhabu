@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-import plugin.panhabu.PrisonFunctions.Prisoners;
+import plugin.panhabu.PluginFunctions.Prisoners;
 
 public class PlayerInteract implements Listener {
 

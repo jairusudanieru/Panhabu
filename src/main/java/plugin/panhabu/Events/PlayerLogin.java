@@ -9,9 +9,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
-import plugin.panhabu.Configuration;
+import plugin.panhabu.PluginFunctions.Configuration;
 import plugin.panhabu.Panhabu;
-import plugin.panhabu.PrisonFunctions.Prisoners;
+import plugin.panhabu.PluginFunctions.Prisoners;
 
 public class PlayerLogin implements Listener {
 

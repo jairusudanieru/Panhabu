@@ -5,9 +5,9 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.NotNull;
-import plugin.panhabu.Configuration;
-import plugin.panhabu.PrisonFunctions.Prisoners;
-import plugin.panhabu.PrisonFunctions.PrisonersFile;
+import plugin.panhabu.PluginFunctions.Configuration;
+import plugin.panhabu.PluginFunctions.Prisoners;
+import plugin.panhabu.PluginFunctions.PrisonersFile;
 
 import java.util.ArrayList;
 import java.util.Collections;

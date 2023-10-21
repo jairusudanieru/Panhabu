@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import plugin.panhabu.Configuration;
+import plugin.panhabu.PluginFunctions.Configuration;
 
 public class PlayerDamage implements Listener {
 

@@ -1,4 +1,4 @@
-package plugin.panhabu.PrisonFunctions;
+package plugin.panhabu.PluginFunctions;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;

@@ -1,8 +1,9 @@
-package plugin.panhabu;
+package plugin.panhabu.PluginFunctions;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
+import plugin.panhabu.Panhabu;
 
 @SuppressWarnings("deprecation")
 public class Configuration {

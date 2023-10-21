@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import plugin.panhabu.Configuration;
+import plugin.panhabu.PluginFunctions.Configuration;
 
 import java.util.Collections;
 import java.util.List;
