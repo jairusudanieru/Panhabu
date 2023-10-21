@@ -2,31 +2,33 @@ name: Panhabu
 version: '${project.version}'
 main: plugin.panhabu.Panhabu
 api-version: '1.20'
+author: 'Jairusu'
+description: 'A custom-built Minecraft plugin designed exclusively for the PandesalSMP server.'
 
 commands:
   panhabu:
-    description: "command"
+    description: 'command'
     permission: op
   prison:
-    description: "command"
+    description: 'command'
     permission: op
     aliases:
       - jail
   release:
-    description: "command"
+    description: 'command'
     permission: op
     aliases:
       - unjail
   setauth:
-    description: "command"
+    description: 'command'
     permission: op
   setprison:
-    description: "command"
+    description: 'command'
     permission: op
     aliases:
       - setjail
   setspawn:
-    description: "command"
+    description: 'command'
     permission: op
   spawn:
-    description: "command"
+    description: 'command'
